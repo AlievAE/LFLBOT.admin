@@ -1,0 +1,10 @@
+.accept_btn{
+    font-size: 20px;
+    float: left;
+    background-color: #93DF70;
+}
+.decline_btn{
+    font-size: 20px;
+    float: right;
+    background-color: #FA8989;
+}

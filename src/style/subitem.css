@@ -1,0 +1,48 @@
+.check_btn{
+    position: relative;
+}
+.sub_info{
+    background-color: #FFF9F9;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-start;
+    width: 80%;
+}
+.tg_nick{
+    position: relative;
+    left: 0%;
+    width: 30%;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    align-self: stretch;
+}
+.start_date{
+    position: relative;
+    left: 5%;
+    width: 30%;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    align-self: stretch;
+}
+.link{
+    position: relative;
+    left: 10%;
+    width: 30%;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    align-self: stretch;
+}
+.unsub_btn{
+    background-color: #FA8989;
+}
+
+.team_info button{
+    font-family: 'Noto Sans', Sans-Serif;
+}
