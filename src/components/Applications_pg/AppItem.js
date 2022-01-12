@@ -1,26 +1,26 @@
-import "../../style/AppItem.css"
+import React from 'react'
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import "./application.css"
 
-function AppItem({item}) {
-    const UpdateStatus = ()=>{
-        item.selected = !item.selected;
-    }
-    const {id, tg_nickname, team, site_id, selected} = item;
+function AppItem(props) {
+    const { applicationId, selectItem } = props;
+    const application = useSelector((state) => 
+        state.application.applicationList[applicationId]);
+    const {tg_nickname, team, site_id} = application;
     return (
-        <div className='sub_item'>
-            <input type="checkbox" onClick={UpdateStatus} className="check_btn">
+        <div className="sub_part_info">
+            <input type="checkbox" onClick={() => selectItem(applicationId)} className="check_btn">
             </input>
-            <div className="sub_info">
-                <p className="tg_nick">
-                    {tg_nickname}
-                </p>
-                <p className="start_date">
-                    {team}
-                </p>
-                <p className="link">
-                    {site_id}
-                </p>
-            </div>
-
+            <p className="tg_nick">
+                {tg_nickname}
+            </p>
+            <p className="start_date">
+                {team}
+            </p>
+            <p className="link">
+                {site_id}
+            </p>
         </div>
     )
 }

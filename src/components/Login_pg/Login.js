@@ -1,34 +1,56 @@
 import React from 'react'
-import login_button from './login_button.js';
+
+import { useAuth } from "./useAuth";
+
+import "./login.css"
+
 
 function Login() {
-    const defaultLogin = '';
-    const [login, setLogin] = React.useState(defaultLogin);
+    const [login, setLogin] = React.useState("");
+    const [password, setPassword] = React.useState("");
+    const [error, setError] = React.useState("");
+    const { onAuth } = useAuth(setError);
+
+    React.useEffect(() => {
+        if (error) {
+          setError("");
+        }
+      }, [login, password]);
+
+    const handleClick = async (event) => {
+        event.preventDefault();
+        if (!login) {
+            setError("Введите логин");
+            return;
+        }
+        if (!password) {
+            setError("Введите пароль");
+            return;
+        }
+        try {
+            await onAuth(login, password);
+        } catch (err) {
+            //
+        }
+    };
+
     return (
         <div>
             <form className="login_box" method="post" id="login_form">
-                <h1 className="enter">Войти</h1>
+                <h1 className="enter">Админка LFLBOT</h1>
                 <div className="form-group">
-                    <label className="form-label">Телеграм или почта</label>
-                    <input onBlur={(event) => { setLogin(event.target.value)}} className="form-control"/>
+                    <label className="form-label">Никнейм</label>
+                    <input onChange={(event) => { setLogin(event.target.value)}} className="form-control"/>
                 </div>
                 <div className="form-group">
                     <label className="form-label">Пароль</label>
-                    <input className="form-control" type="password"/>
+                    <input onChange={(event) => { setPassword(event.target.value)}} className="form-control" type="password"/>
                 </div>
-                <div className="reset_password">
-                    <a href="https://vk.com/id157436281" className="reset_text"> сброс пароля </a>
-                </div>
-                <div className="enter_link">
-                    <button type='submit' className="enter_text"
-                        onClick={(el) => {
-                                login_button(el, login);
-                            }
-                        }
-                    >
-                        Войти
-                    </button>
-                </div>
+                <button className="home_btn"
+                    onClick={handleClick}
+                >
+                    Войти
+                </button>
             </form>
         </div>
     )

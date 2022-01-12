@@ -5,9 +5,12 @@
     background-color: #FFF9F9;
     display: flex;
     flex-direction: row;
-    align-items: stretch;
+    align-items: center;
     justify-content: flex-start;
-    width: 80%;
+    width: 42%;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 23%;
 }
 .tg_nick{
     position: relative;
@@ -39,10 +42,8 @@
     overflow: hidden;
     align-self: stretch;
 }
-.unsub_btn{
-    background-color: #FA8989;
-}
 
 .team_info button{
+    cursor: pointer;
     font-family: 'Noto Sans', Sans-Serif;
 }

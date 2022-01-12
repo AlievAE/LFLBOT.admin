@@ -1,76 +1,13 @@
 .main_positioning{
     position: absolute;
     top: 80px;
-    width: 90%;
-}
-
-.team_logo{
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 10px;
-    float: left;
-}
-
-.team_info{
-    font-family: 'Noto Sans', Sans-Serif;
-    float: left;
-    /* text-align: left; */
-    margin: 0;
-    padding: 0;
-    /* width:50%; */
-}
-
-#team_name{
-    color: #193AEC;
-    font-size: 32px;
-    margin : 0;
-    margin-top: 4px;
-    padding: 0;
-}
-
-#start_date{
-    /* color: red; */
-    /* font-size: 32px; */
-    margin : 0;
-    margin-bottom: 30px;
-    padding: 0;
-}
-
-#out_button{
-    background-color: #FA8989;
-    font-size: 20px;
-    margin : 0;
-    padding: 0;
-}
-
-#subscribers_total{
-    font-size: 20px;
-    width: 80%;
-    margin-top : 0px;
-    margin-bottom: 20px;
-    padding: 0;
-}
-
-.sub_item{
-    font-family: 'Noto Sans', Sans-Serif;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 90%;
-    border-bottom: 2px solid rgba(0,0,0,.3);
-    background-color: rgba(255, 255, 255, 1);
-}
-
-.subscriber_list{
-    position: absolute;
     width: 100%;
-    top: 200px;
 }
 
-.sub_list{
-    position: relative;
-    width: 90%;
-    left: 10%;
-    /* top: 200px; */
-}
+.team_full_info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid red;
+    padding: 1px;
+};

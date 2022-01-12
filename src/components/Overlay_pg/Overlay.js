@@ -1,36 +1,39 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Page from './Page';
 import home_button from './home_button.js';
+import './overlay.css'
+import { useDispatch, useSelector } from "react-redux";
+
 
 const pages = [
     {
-        id: 1,
-        name: 'Игроки',
-        path: '/home'
-    },
-    {
-        id: 2,
+        id: 0,
         name: 'Команды',
-        path: '/neon'
+        path: '/teams'
     },
     {
-        id: 3,
+        id: 1,
         name: 'Заявки',
         path: '/applications'
     },
 ]
 
 function Overlay() {
+    const navigate = useNavigate();
+    const user = useSelector((state) => state.user.user) || {};
+    if (!user) {
+        return <h1>Войдите в аккаунт</h1>
+    }
     return (
         <div>
-            <div className="button">
-                <button className="home_btn"
-                    onClick={(el) => {
-                        home_button(el);
-                    }
-                    }> LFLBOT.Admin </button>
-            </div>
-            <div className='pages_list'>
+            <button className="log_btn"
+                onClick={(el) => {
+                    home_button(el, navigate);
+                }
+                }
+            > LFLBOT.Admin </button>
+            <div className='overlay_pages'>
                 {pages.map(elem => <Page key={elem.id} item={elem} />)}
             </div>
         </div>

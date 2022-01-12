@@ -1,7 +1,6 @@
-function home_button(el) {
+function home_button(el, navigate) {
     el.preventDefault();
-    // document.getElementById("login_form").submit();
-    window.location.href = "/";
+    navigate("/");
 }
 
 export default home_button;

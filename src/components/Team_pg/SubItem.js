@@ -1,27 +1,27 @@
 import "../../style/subitem.css"
+import React from 'react'
 
-function SubItem({item}) {
-    const UpdateStatus = ()=>{
-        item.selected = !item.selected;
-    }
-    const {id, tg_nickname, start_date, link, selected} = item;
+import { useDispatch, useSelector } from "react-redux";
+
+function SubItem(props) {
+    const { playerId, selectItem } = props;
+    const player = useSelector((state) => 
+        state.player.playerList[playerId]);
+    const {team, tg_nickname, site_id, subscription_date} = player;
     return (
-        <div className='sub_item'>
-            <input type="checkbox" onClick={UpdateStatus} className="check_btn">
-            </input>
             <div className="sub_info">
+            <input type="checkbox" onClick={() => selectItem(playerId)} className="check_btn">
+            </input>
                 <p className="tg_nick">
                     {tg_nickname}
                 </p>
                 <p className="start_date">
-                    {start_date}
+                    {subscription_date}
                 </p>
                 <p className="link">
-                    {link}
+                    {site_id}
                 </p>
             </div>
-
-        </div>
     )
 }
 

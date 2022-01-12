@@ -1,0 +1,69 @@
+.t_title{
+    /* font-size: 54px; */
+    font-size: 30px;
+    font-family: 'Noto Sans', Sans-Serif;
+    text-size-adjust: none;
+}
+.global_position{
+    position: relative;
+    top: 30px;
+    width: 100%;
+    display: grid;
+    gap: 3%;
+    /* grid-template-columns: 18% 60%; */
+}
+.team_sub_list{
+    width: 90%;
+    /* margin-left: 100px; */
+}
+.team_full_info{
+    display: grid;
+    gap: 2.5%;
+    grid-template-columns: 18% 60%;
+    height: 200px;
+}
+.team_part_info{
+    position: relative;
+    height: 200px;
+    margin: 0;
+    display: grid;
+    grid-template-rows: 33% 33% 33%;
+    gap: 15px;
+    grid-auto-flow: row;
+    margin: 0;
+    align-items: baseline;
+
+}
+
+/* CSS */
+.unsub_btn {
+  background-color: initial;
+  background-image: linear-gradient(-180deg, #FF7E31, #E62C03);
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Noto Sans', Sans-Serif;
+  /* height: 40px; */
+  line-height: 40px;
+  outline: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: top;
+  white-space: nowrap;
+  width: 30%;
+  z-index: 9;
+  border: 0;
+  transition: box-shadow .2s;
+}
+
+.unsub_btn:hover {
+  box-shadow: rgba(253, 76, 0, 0.5) 0 3px 8px;
+}

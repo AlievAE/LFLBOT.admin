@@ -1,52 +1,93 @@
 import React from 'react'
-import SubList from './SubList';
-import logo from './neon.webp';
-import '../../style/team.css'
+import SubItem from './SubItem';
+import './team_pg.css'
+import { Spinner } from "../Spinner/Spinner";
 
 
-function Team(param) {
-    /*по-хорошему тут запросы в бд*/
-    const {team} = param;
-    const[state, setState] = React.useState([
-        {
-            id:0,
-            tg_nickname: "@hahhhhhhллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллhhhhhhhhhhhhhhhhhhhhah",
-            start_date: "12.11.2021",
-            link: "looooooooooooooooooooooooooooooooooooooooooooooooong",
-            selected: false
-        },
-        {
-            id:1,
-            tg_nickname: "@hihih",
-            start_date: "12.11.2001",
-            link: "link2",
-            selected: false
-        },
-        {
-            id:2,
-            tg_nickname: "@kto?",
-            start_date: "12.11.2111",
-            link: "link3",
-            selected: false
-        },
-    ])    
-    const deleteItem = ()=>{
-        setState(()=>state.filter(elem=>elem.selected === false));
+import { useHistory, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { HOST_ADDR } from '../../constants/constants'
+
+import {
+    fetchTeams,
+    fetchPlayers,
+    setError,
+    erasePlayers,
+    deleteSingle
+} from "../../actions/application";
+import { ApiClientService } from '../../services/ApiClientService'; 
+
+
+function Team() {
+    const params = useParams();
+    const { teamId } = params;
+
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.user.user) || {};
+
+    const teamList = useSelector((state) => state.team.teamList);
+    const playerIds = useSelector((state) => state.player.playerId);
+    const playerList = useSelector((state) => state.player.playerList);
+    React.useEffect(() => {
+        if (user && user.id !== null && user.id !== undefined) {
+            dispatch(fetchTeams());
+            dispatch(fetchPlayers());
+        } else {
+          dispatch(
+            setError("Войдите в аккаунт")
+          );
+        }
+    }, [user]);
+    const team = teamList[teamId] || {};
+    const teamPlayers = playerIds.filter(playerId => playerList[playerId].team === team.team);
+    const length = teamPlayers.length;
+
+    const[selected, setSelected] = React.useState([]);    
+    const selectItem = (id)=>{
+        if (selected.includes(id)) {
+            setSelected(()=>selected.filter(elem=>elem !== id));
+        } else {
+            setSelected(()=>selected.concat(id));
+        }
     }
-    let length = state.length;
+
+    const unsubSelected = ()=> {
+        selected.map((elem)=>dispatch(deleteSingle(elem, 'players')));
+        dispatch(erasePlayers(team, selected));
+        setSelected([]);
+    }
+
+    if (!(user && user.id !== null && user.id !== undefined)) {
+        return <div className="main_positioning">Для просмотра необходимо авторизоваться</div>;
+    }
+
+    if (!teamList) {
+        return <Spinner />;
+    }
+
+    function UnsubButton() {
+        if (length === 0) {
+            return <></>
+        } else {
+            return <button onClick={unsubSelected} className="unsub_btn"> Отписать выбранных </button>;
+        }
+    }
+
     return (
-        <div className="main_positioning">
-            <div className="team_logo">
-                <img src={logo} alt="logo" />
+        
+        <div className="global_position">
+            <div className="team_full_info">
+                <img src={team.logo.substr(16)} alt="logo" className='logo'/>
+                <div className='team_part_info'>
+                    <p className='t_title'> {team.team} </p> 
+                    <p className='t_length'> Подписаны на обновления: всего {length} </p>  
+                    <UnsubButton/>
+                </div>
             </div>
-            <div className="team_info">
-                <p id="team_name">{team}</p>
-                <p id="start_date"> отслеживается с 13.11.2021 </p>
-                <button id="out_button"> Перестать отслеживать</button>
-            </div>
-            <div className="subscriber_list">
-            <p id="subscribers_total"> Подписаны на обновления: всего {length} </p> 
-                <SubList state={state} deleteItem={deleteItem}/>
+            <div className="team_sub_list">
+                <div className='sub_list'>
+                    {teamPlayers.map(elem=><SubItem key={elem} playerId={elem} selectItem={selectItem}/>)}
+                </div>
             </div>
         </div>
     )

@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
 import App from './components/App';
+import { initStore } from "./store";
 
 ReactDOM.render(
-    <App />,
+  <Provider store={initStore()}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );
