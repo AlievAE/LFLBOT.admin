@@ -9,7 +9,7 @@
     cursor: pointer;
     display: inline-flex;
     flex-direction: column;
-    font-family: 'Noto Sans', Sans-Serif;
+    /* font-family: 'Noto Sans', Sans-Serif; */
     font-size: 18px;
     height: 52px;
     justify-content: center;

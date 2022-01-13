@@ -26,10 +26,14 @@ config.read(BASE_DIR / 'django.conf')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config['main']['SECRET_KEY']
 
+ADMIN_EMAIL_PROTOCOL = 'smtp.yandex.ru:465'
+ADMIN_EMAIL = config['email']['EMAIL']
+ADMIN_PASSWORD = config['email']['PASSWORD']
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['51.250.16.148/', 'localhost']
 CORS_ALLOW_METHODS = ['DELETE', 'GET', 'OPTIONS', 'PATCH', 'POST', 'PUT']
 
 

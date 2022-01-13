@@ -5,6 +5,7 @@ from rest_framework import viewsets, mixins, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from .send_mail import send_mail
 from .serializers import UserSerializer
 
 
@@ -22,4 +23,5 @@ class UserViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
 class CurrentUser(APIView):
     def get(self, request):
         serializer = UserSerializer(request.user)
+        send_mail(serializer.data['email'])
         return Response(serializer.data)

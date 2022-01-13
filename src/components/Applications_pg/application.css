@@ -15,12 +15,12 @@
     margin-top: 20px;
     background-color: initial;
     background-image: linear-gradient(-180deg, #ce58ca, #e292d5);
-    border-radius: 6px;
+    border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
     color: #FFFFFF;
     cursor: pointer;
     display: inline-block;
-    font-family: 'Noto Sans', Sans-Serif;
+    /* font-family: 'Noto Sans', Sans-Serif; */
     /* height: 40px; */
     line-height: 40px;
     outline: 0;

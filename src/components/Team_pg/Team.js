@@ -7,6 +7,7 @@ import { Spinner } from "../Spinner/Spinner";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { HOST_ADDR } from '../../constants/constants'
+import { Navigate, useNavigate } from "react-router-dom";
 
 import {
     fetchTeams,
@@ -22,6 +23,7 @@ function Team() {
     const params = useParams();
     const { teamId } = params;
 
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user.user) || {};
 
@@ -30,7 +32,7 @@ function Team() {
     const playerList = useSelector((state) => state.player.playerList);
     React.useEffect(() => {
         if (user && user.id !== null && user.id !== undefined) {
-            dispatch(fetchTeams());
+            // dispatch(fetchTeams());
             dispatch(fetchPlayers());
         } else {
           dispatch(
@@ -38,7 +40,7 @@ function Team() {
           );
         }
     }, [user]);
-    const team = teamList[teamId] || {};
+    const team = teamList[teamId] || "";
     const teamPlayers = playerIds.filter(playerId => playerList[playerId].team === team.team);
     const length = teamPlayers.length;
 
@@ -61,7 +63,7 @@ function Team() {
         return <div className="main_positioning">Для просмотра необходимо авторизоваться</div>;
     }
 
-    if (!teamList) {
+    if (!team || team === "") {
         return <Spinner />;
     }
 
@@ -72,6 +74,11 @@ function Team() {
             return <button onClick={unsubSelected} className="unsub_btn"> Отписать выбранных </button>;
         }
     }
+    const handleClick = async (event) => {
+        dispatch(deleteSingle(teamId, 'teams'));
+        dispatch(fetchTeams());
+        navigate('/teams');
+    };
 
     return (
         
@@ -79,7 +86,13 @@ function Team() {
             <div className="team_full_info">
                 <img src={team.logo.substr(16)} alt="logo" className='logo'/>
                 <div className='team_part_info'>
-                    <p className='t_title'> {team.team} </p> 
+                    <div className='team_del_info'>
+                        <p className='t_title'> {team.team} </p>
+                        <button className="del_team_btn"
+                            onClick={handleClick}
+                        > Удалить команду
+                        </button>
+                    </div>
                     <p className='t_length'> Подписаны на обновления: всего {length} </p>  
                     <UnsubButton/>
                 </div>

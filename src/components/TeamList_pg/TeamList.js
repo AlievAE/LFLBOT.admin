@@ -41,7 +41,7 @@ function TeamList() {
     const length = teamIds.length;
     return (
         <div className="team_list_full">
-              <p style={{'font-size':'24px', 'font-family': 'Noto Sans, Sans-Serif'}}> Всего отслеживается: {team_count} команд </p> 
+              <p style={{'font-size':'24px'}}> Всего отслеживается: {team_count} команд </p> 
               <div className='team_list'>
                   {teamIds.map(elem=><TeamItem teamId={elem} key={elem}/>)}
               </div>

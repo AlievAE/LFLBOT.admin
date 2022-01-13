@@ -1,6 +1,6 @@
 .home_btn {
   cursor: pointer;
-  height: 10%;
+  /* height: 10%; */
   position: relative;
   margin-right: 8%;
   margin-left: 10%;
@@ -11,8 +11,8 @@
   align-items: center;
   align-content: center;
   padding: 6px 14px;
-  font-family: 'Noto Sans', Sans-Serif;
-  border-radius: 6px;
+  /* font-family: 'Noto Sans', Sans-Serif; */
+  border-radius: 8px;
   border: none;
 
   color: #fff;
@@ -30,8 +30,8 @@
 }
 
 .login_box{
-    border-radius: 10px;
-    font-family: 'Noto Sans', Sans-Serif;
+    border-radius: 8px;
+    /* font-family: 'Noto Sans', Sans-Serif; */
     position: absolute;
     left: 32%;
     top: 100px;
