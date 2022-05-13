@@ -1,0 +1,13 @@
+.main_positioning{
+    position: absolute;
+    top: 80px;
+    width: 100%;
+}
+
+.team_full_info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid red;
+    padding: 1px;
+};

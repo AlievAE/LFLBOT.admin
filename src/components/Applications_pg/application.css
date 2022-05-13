@@ -1,0 +1,44 @@
+.sub_part_info{
+    background-color: #FFF9F9;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 38.5%;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 20.5%;
+}
+
+.app_btn {
+    left: 34%;
+    margin-top: 20px;
+    background-color: initial;
+    background-image: linear-gradient(-180deg, #ce58ca, #e292d5);
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    /* font-family: 'Noto Sans', Sans-Serif; */
+    /* height: 40px; */
+    line-height: 40px;
+    outline: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    pointer-events: auto;
+    position: relative;
+    text-align: center;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: top;
+    white-space: nowrap;
+    z-index: 9;
+    border: 0;
+    transition: box-shadow .2s;
+  }
+  
+  .app_btn:hover {
+    box-shadow: rgba(5, 105, 72, 0.5) 0 3px 8px;
+  }
